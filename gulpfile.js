@@ -1,12 +1,10 @@
 var gulp = require('gulp');
-var react = require('gulp-react');
+var babel = require('gulp-babel');
 var webpack = require('webpack');
 
 gulp.task('release', function() {
     return gulp.src('src/Wizard.jsx')
-        .pipe(react({
-            harmony: true
-        }))
+        .pipe(babel())
         .pipe(gulp.dest('lib'));
 });
 
