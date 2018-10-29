@@ -12,7 +12,6 @@ gulp.task('release', function() {
 gulp.task('bundleSimple', function(cb) {
   webpack({
     target: 'web',
-    debug: true,
     bail: true,
     entry: {
       index: './examples/simple/index.js',
@@ -20,14 +19,18 @@ gulp.task('bundleSimple', function(cb) {
     output: {
       path: './examples/simple/',
       filename: '[name].bundle.js'
-    }
+    },
+    plugins: [
+       new webpack.LoaderOptionsPlugin({
+           debug: true
+       })
+    ]
   }, cb);
 });
 
 gulp.task('bundleData', function(cb) {
   webpack({
     target: 'web',
-    debug: true,
     bail: true,
     entry: {
       index: './examples/data/index.js',
@@ -35,7 +38,12 @@ gulp.task('bundleData', function(cb) {
     output: {
       path: './examples/data/',
       filename: '[name].bundle.js'
-    }
+    },
+    plugins: [
+       new webpack.LoaderOptionsPlugin({
+           debug: true
+       })
+    ]
   }, cb);
 });
 
@@ -43,7 +51,6 @@ gulp.task('bundleData', function(cb) {
 gulp.task('bundleSkip', function(cb) {
   webpack({
     target: 'web',
-    debug: true,
     bail: true,
     entry: {
       index: './examples/skip/index.js',
@@ -51,7 +58,12 @@ gulp.task('bundleSkip', function(cb) {
     output: {
       path: './examples/skip/',
       filename: '[name].bundle.js'
-    }
+    },
+    plugins: [
+       new webpack.LoaderOptionsPlugin({
+           debug: true
+       })
+    ]
   }, cb);
 });
 
