@@ -1,14 +1,13 @@
 'use strict';
-var React = require('react');
+import React from 'react';
 
-module.exports = {
-  name: 'Three',
-  onSubmit: function (done){
+export var name = 'Three';
+export function onSubmit(done) {
     done();
-  },
-  component: React.createClass({displayName: 'component',
-    render: function(){
-      return React.createElement('h4', null, 'Your name is ' + this.props.data.name);
+  };
+
+export class component extends React.Component {
+    render() {
+      return <h4>Your name is {this.props.data.name}</h4>;
     }
-  })
-};
+}

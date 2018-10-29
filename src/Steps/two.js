@@ -1,26 +1,21 @@
 'use strict';
-var React = require('react');
-var Input = require('react-bootstrap').Input;
+import React from 'react';
+//import Input from 'react-bootstrap/lib/Input';
 
-module.exports = {
-  name: 'Two',
-  onSubmit: function (done){
+export var name = 'Two';
+export function onSubmit(done) {
     if(!this.props.data.name){
       return done(new Error('but.. You MUST enter your name.'));
     }
     done();
-  },
-  component: React.createClass({displayName: 'component',
-    onNameChange: function(e){
+  };
+
+export class component extends React.Component {
+    onNameChange(e) {
       this.props.data.name = e.target.value;
-    },
-    render: function(){
-      return React.createElement(Input,
-        {
-          type: 'text',
-          label: 'Enter your name',
-          onChange: this.onNameChange
-        });
     }
-  })
-};
+
+    render() {
+      return <input type="text" label="Enter your name" onChange={this.onNameChange} />;
+    }
+}

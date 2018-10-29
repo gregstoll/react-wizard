@@ -1,9 +1,9 @@
 'use strict';
-var React = require('react');
+import React from 'react';
 
-export class One extends React.Component {
+export class component extends React.Component {
     render() {
-      return React.createElement('h4', null, 'I was told you tell you: ' + this.props.data.something);
+      return <h4>I was told you tell you: {this.props.data.something}</h4>;
     }
 }
 export var name = "One"
