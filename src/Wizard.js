@@ -1,5 +1,4 @@
 /** @jsx React.DOM */
-'use strict';
 
 var React = require('react');
 var Button = require('react-bootstrap').Button;
@@ -8,14 +7,15 @@ var ListGroupItem = require('react-bootstrap').ListGroupItem;
 var ListGroup = require('react-bootstrap').ListGroup;
 var Alert = require('react-bootstrap').Alert;
 
-var Step = React.createClass({
-  getInitialState: function(){
+class Step extends React.Component {
+  getInitialState() {
     return {
       advanceDisabled: false,
       retreatDisabled: false,
-    };
-  },
-  onAdvance: function(err){
+    }
+  }
+
+  onAdvance(err) {
     if(err){
       this.setState({
         advanceDisabled: false,
@@ -25,23 +25,25 @@ var Step = React.createClass({
     }else{
       this.props.onAdvance();
     }
-  },
-  onSubmit: function(){
+  }
+
+  onSubmit() {
     this.setState({
       advanceDisabled: true,
       retreatDisabled: true
     });
     this.props.onSubmit.apply(this, [this.onAdvance]);
-  },
-  onBack: function(){
+  }
+
+  onBack() {
     if(this.props.onBack){
       this.props.onBack.apply(this, [this.props.onRetreat]);
     }else{
       this.props.onRetreat();
     }
-  },
-  render: function(){
+  }
 
+  render() {
     var AdvanceButton;
     if(!this.props.lastStep){
       AdvanceButton = React.createElement(Button, {
@@ -77,10 +79,10 @@ var Step = React.createClass({
               {Error}
            </div>;
   }
-});
+}
 
-var Wizard = React.createClass({
-  getInitialState: function(){
+export default class Wizard extends React.Component {
+  getInitialState() {
     return {
       currentStep: this.props.start || 0,
       currentError: null,
@@ -88,30 +90,34 @@ var Wizard = React.createClass({
       advanceDisabled: false,
       retreatDisabled: false
     };
-  },
-  getDefaultProps: function(){
+  }
+
+  getDefaultProps() {
     return {
       steps: []
     };
-  },
-  advance: function(e){
+  }
+
+  advance(e) {
     var self = this;
     self.setState({
       advanceDisabled: true,
       retreatDisabled: true
     });
-  },
-  retreat: function(e){
+  }
+
+  retreat(e) {
     var self = this;
     self.setState({
       currentStep: self.state.currentStep-1,
     });
-  },
-  navigate: function(e){
-    console.log(e);
-  },
-  render: function() {
+  }
 
+  navigate(e) {
+    console.log(e);
+  }
+
+  render() {
     var self = this;
 
     var items = this.props.steps.map(function(step, idx){
@@ -152,6 +158,6 @@ var Wizard = React.createClass({
             </div>
            </div>;
   }
-});
+}
 
-module.exports = Wizard;
+//module.exports = Wizard;
