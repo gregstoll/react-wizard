@@ -1,3 +1,7 @@
+Greg's notes
+------------
+This ***does not work***.  I attempted to update this to use a more modern version of React, and sort of got things working, but the Bootstrap stuff is still broken as is some of the callbacks.  I don't plan to work on this anymore.
+
 react-wizard
 ------------
 Wizard is a typical wizard element for installs, mulitpart forms, etc. It takes a steps prop with an array of Step objects, start prop with optional integer to skip into the step array, and any othr props you will need later on in Step methods as a data prop. 
